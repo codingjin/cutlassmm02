@@ -1,0 +1,131 @@
+Detected GPU: NVIDIA GeForce RTX 3090
+Power cap settings (5 total): 100W, 200W, 300W, 400W, 450W
+
+Starting multi-size benchmark with energy measurement...
+Results will be saved to case{1-4}/summary.csv
+
+Running case1 config_0 powercap_100W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 279.605 ms (CV: 0.89%), GFLOPS: 3932, Energy: 38238 mJ (CV: 3.63%), Power: 137 W
+Running case1 config_0 powercap_200W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 96.151 ms (CV: 0.92%), GFLOPS: 11435, Energy: 18939 mJ (CV: 0.91%), Power: 197 W
+Running case1 config_0 powercap_300W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 49.119 ms (CV: 0.14%), GFLOPS: 22385, Energy: 14633 mJ (CV: 0.10%), Power: 298 W
+Running case1 config_0 powercap_400W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 48.688 ms (CV: 0.14%), GFLOPS: 22583, Energy: 19414 mJ (CV: 0.85%), Power: 399 W
+Running case1 config_0 powercap_450W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 48.598 ms (CV: 0.06%), GFLOPS: 22625, Energy: 21511 mJ (CV: 0.88%), Power: 443 W
+Running case1 config_1 powercap_100W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 317.627 ms (CV: 0.11%), GFLOPS: 3462, Energy: 43321 mJ (CV: 0.67%), Power: 136 W
+Running case1 config_1 powercap_200W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 94.371 ms (CV: 0.64%), GFLOPS: 11651, Energy: 18949 mJ (CV: 0.15%), Power: 201 W
+Running case1 config_1 powercap_300W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 48.584 ms (CV: 0.19%), GFLOPS: 22631, Energy: 14519 mJ (CV: 1.03%), Power: 299 W
+Running case1 config_1 powercap_400W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 48.599 ms (CV: 0.02%), GFLOPS: 22624, Energy: 19326 mJ (CV: 0.94%), Power: 398 W
+Running case1 config_1 powercap_450W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 48.506 ms (CV: 0.02%), GFLOPS: 22668, Energy: 21365 mJ (CV: 0.90%), Power: 440 W
+Running case1 config_2 powercap_100W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 338.446 ms (CV: 0.07%), GFLOPS: 3249, Energy: 45642 mJ (CV: 0.55%), Power: 135 W
+Running case1 config_2 powercap_200W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 98.429 ms (CV: 0.85%), GFLOPS: 11171, Energy: 19820 mJ (CV: 0.54%), Power: 201 W
+Running case1 config_2 powercap_300W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 48.788 ms (CV: 0.27%), GFLOPS: 22536, Energy: 14570 mJ (CV: 0.80%), Power: 299 W
+Running case1 config_2 powercap_400W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 47.896 ms (CV: 0.05%), GFLOPS: 22956, Energy: 19071 mJ (CV: 0.13%), Power: 398 W
+Running case1 config_2 powercap_450W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 47.881 ms (CV: 0.04%), GFLOPS: 22963, Energy: 21168 mJ (CV: 0.87%), Power: 442 W
+Running case2 config_0 powercap_100W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 473.714 ms (CV: 0.06%), GFLOPS: 4642, Energy: 70402 mJ (CV: 0.23%), Power: 149 W
+Running case2 config_0 powercap_200W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 207.800 ms (CV: 0.20%), GFLOPS: 10582, Energy: 41281 mJ (CV: 0.33%), Power: 199 W
+Running case2 config_0 powercap_300W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 115.010 ms (CV: 0.04%), GFLOPS: 19120, Energy: 34378 mJ (CV: 0.02%), Power: 299 W
+Running case2 config_0 powercap_400W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 114.151 ms (CV: 0.01%), GFLOPS: 19264, Energy: 45513 mJ (CV: 0.44%), Power: 399 W
+Running case2 config_0 powercap_450W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 113.877 ms (CV: 0.21%), GFLOPS: 19310, Energy: 50035 mJ (CV: 0.06%), Power: 439 W
+Running case2 config_1 powercap_100W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 634.306 ms (CV: 0.01%), GFLOPS: 3467, Energy: 88572 mJ (CV: 0.31%), Power: 140 W
+Running case2 config_1 powercap_200W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 193.487 ms (CV: 0.32%), GFLOPS: 11365, Energy: 38275 mJ (CV: 0.43%), Power: 198 W
+Running case2 config_1 powercap_300W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 115.365 ms (CV: 0.03%), GFLOPS: 19062, Energy: 34492 mJ (CV: 0.41%), Power: 299 W
+Running case2 config_1 powercap_400W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 114.075 ms (CV: 0.03%), GFLOPS: 19277, Energy: 45366 mJ (CV: 0.04%), Power: 398 W
+Running case2 config_1 powercap_450W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 113.897 ms (CV: 0.03%), GFLOPS: 19307, Energy: 49921 mJ (CV: 0.05%), Power: 438 W
+Running case2 config_2 powercap_100W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 674.133 ms (CV: 0.02%), GFLOPS: 3262, Energy: 109747 mJ (CV: 3.45%), Power: 163 W
+Running case2 config_2 powercap_200W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 206.327 ms (CV: 0.52%), GFLOPS: 10658, Energy: 41404 mJ (CV: 0.74%), Power: 201 W
+Running case2 config_2 powercap_300W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 113.969 ms (CV: 0.13%), GFLOPS: 19295, Energy: 34235 mJ (CV: 0.75%), Power: 300 W
+Running case2 config_2 powercap_400W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 115.239 ms (CV: 0.19%), GFLOPS: 19082, Energy: 45745 mJ (CV: 0.66%), Power: 397 W
+Running case2 config_2 powercap_450W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 114.375 ms (CV: 0.48%), GFLOPS: 19226, Energy: 48663 mJ (CV: 3.24%), Power: 425 W
+Running case3 config_0 powercap_100W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 95.974 ms (CV: 0.50%), GFLOPS: 5728, Energy: 14321 mJ (CV: 0.61%), Power: 149 W
+Running case3 config_0 powercap_200W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 43.631 ms (CV: 0.29%), GFLOPS: 12600, Energy: 8762 mJ (CV: 1.44%), Power: 201 W
+Running case3 config_0 powercap_300W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 21.769 ms (CV: 0.47%), GFLOPS: 25254, Energy: 6499 mJ (CV: 1.79%), Power: 299 W
+Running case3 config_0 powercap_400W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 21.569 ms (CV: 0.04%), GFLOPS: 25488, Energy: 8595 mJ (CV: 2.25%), Power: 399 W
+Running case3 config_0 powercap_450W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 21.555 ms (CV: 0.01%), GFLOPS: 25505, Energy: 9506 mJ (CV: 2.35%), Power: 441 W
+Running case3 config_1 powercap_100W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 131.411 ms (CV: 2.06%), GFLOPS: 4183, Energy: 17846 mJ (CV: 0.45%), Power: 136 W
+Running case3 config_1 powercap_200W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 46.319 ms (CV: 0.24%), GFLOPS: 11869, Energy: 9404 mJ (CV: 0.82%), Power: 203 W
+Running case3 config_1 powercap_300W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 22.639 ms (CV: 0.41%), GFLOPS: 24284, Energy: 6750 mJ (CV: 2.27%), Power: 298 W
+Running case3 config_1 powercap_400W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 21.753 ms (CV: 0.01%), GFLOPS: 25273, Energy: 8582 mJ (CV: 2.16%), Power: 395 W
+Running case3 config_1 powercap_450W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 21.722 ms (CV: 0.03%), GFLOPS: 25308, Energy: 9634 mJ (CV: 1.94%), Power: 444 W
+Running case3 config_2 powercap_100W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 138.774 ms (CV: 0.30%), GFLOPS: 3962, Energy: 18980 mJ (CV: 0.52%), Power: 137 W
+Running case3 config_2 powercap_200W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 47.192 ms (CV: 0.44%), GFLOPS: 11649, Energy: 9566 mJ (CV: 1.36%), Power: 203 W
+Running case3 config_2 powercap_300W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 23.400 ms (CV: 0.33%), GFLOPS: 23494, Energy: 6979 mJ (CV: 2.09%), Power: 298 W
+Running case3 config_2 powercap_400W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 22.222 ms (CV: 0.03%), GFLOPS: 24740, Energy: 8804 mJ (CV: 1.75%), Power: 396 W
+Running case3 config_2 powercap_450W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 22.146 ms (CV: 0.03%), GFLOPS: 24824, Energy: 9840 mJ (CV: 1.81%), Power: 444 W
+Running case4 config_0 powercap_100W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 100.897 ms (CV: 0.44%), GFLOPS: 5449, Energy: 14876 mJ (CV: 0.73%), Power: 147 W
+Running case4 config_0 powercap_200W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 45.206 ms (CV: 0.57%), GFLOPS: 12161, Energy: 9039 mJ (CV: 1.03%), Power: 200 W
+Running case4 config_0 powercap_300W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 21.985 ms (CV: 0.66%), GFLOPS: 25006, Energy: 6548 mJ (CV: 0.31%), Power: 298 W
+Running case4 config_0 powercap_400W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 21.645 ms (CV: 0.02%), GFLOPS: 25399, Energy: 8576 mJ (CV: 2.14%), Power: 396 W
+Running case4 config_0 powercap_450W: tb=64x64x32 warp=32x32x32 stages=2
+  -> Time: 21.655 ms (CV: 0.02%), GFLOPS: 25386, Energy: 9655 mJ (CV: 1.68%), Power: 446 W
+Running case4 config_1 powercap_100W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 129.396 ms (CV: 0.28%), GFLOPS: 4249, Energy: 18023 mJ (CV: 0.42%), Power: 139 W
+Running case4 config_1 powercap_200W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 47.618 ms (CV: 0.20%), GFLOPS: 11545, Energy: 9678 mJ (CV: 0.98%), Power: 203 W
+Running case4 config_1 powercap_300W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 23.056 ms (CV: 0.54%), GFLOPS: 23844, Energy: 6929 mJ (CV: 1.77%), Power: 301 W
+Running case4 config_1 powercap_400W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 21.547 ms (CV: 0.02%), GFLOPS: 25514, Energy: 8559 mJ (CV: 2.38%), Power: 397 W
+Running case4 config_1 powercap_450W: tb=64x64x32 warp=32x32x32 stages=3
+  -> Time: 21.525 ms (CV: 0.02%), GFLOPS: 25540, Energy: 9573 mJ (CV: 2.28%), Power: 445 W
+Running case4 config_2 powercap_100W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 147.041 ms (CV: 0.31%), GFLOPS: 3739, Energy: 19995 mJ (CV: 0.28%), Power: 136 W
+Running case4 config_2 powercap_200W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 48.147 ms (CV: 0.12%), GFLOPS: 11418, Energy: 9717 mJ (CV: 0.83%), Power: 202 W
+Running case4 config_2 powercap_300W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 23.951 ms (CV: 0.07%), GFLOPS: 22953, Energy: 7038 mJ (CV: 1.86%), Power: 294 W
+Running case4 config_2 powercap_400W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 21.490 ms (CV: 0.07%), GFLOPS: 25582, Energy: 8478 mJ (CV: 2.29%), Power: 395 W
+Running case4 config_2 powercap_450W: tb=64x64x32 warp=32x32x32 stages=4
+  -> Time: 21.452 ms (CV: 0.02%), GFLOPS: 25627, Energy: 9500 mJ (CV: 2.51%), Power: 443 W
+
+=== Benchmark completed! ===
+Results organized in case{1-4}/ directories:
+  - summary.csv: CSV summary of all configs with powercap sweep
+  - config_*_pow*.txt: Detailed statistics for each config and powercap
