@@ -250,11 +250,12 @@ The `verify_correctness.cu` program validates CUTLASS results against cuBLAS (NV
 **Single command to complete the entire workflow:**
 
 ```bash
-# Test mode (40 benchmarks, ~5-8 minutes)
-./run_complete_benchmark.sh --test
+# Full mode - ALL 36 configs (default, ~4-5 hours)
+./run_complete_benchmark.sh
 
-# Full mode (720 benchmarks, ~4-5 hours)
-./run_complete_benchmark.sh --full
+# Or explicitly:
+./run_complete_benchmark.sh --full   # Full mode (720 benchmarks, ~4-5 hours)
+./run_complete_benchmark.sh --test   # Test mode (40 benchmarks, ~5-8 min)
 ```
 
 This automatically handles everything from `configs` to `final.csv` with progress reporting and error checking.

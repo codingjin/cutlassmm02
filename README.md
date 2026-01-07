@@ -78,11 +78,12 @@ See [MULTI_GPU_SUPPORT.md](MULTI_GPU_SUPPORT.md) for detailed multi-GPU usage.
 **Single command to go from `configs` to `final.csv` for all cases:**
 
 ```bash
-# Test mode (2 configs × 5 powercaps × 4 cases = 40 benchmarks, ~5-8 min)
-./run_complete_benchmark.sh --test
+# Full mode - ALL 36 configs (default, ~4-5 hours)
+./run_complete_benchmark.sh
 
-# Full mode (36 configs × 5 powercaps × 4 cases = 720 benchmarks, ~4-5 hours)
-./run_complete_benchmark.sh --full
+# Or explicitly:
+./run_complete_benchmark.sh --full   # Full mode (36 configs × 5 powercaps × 4 cases = 720 benchmarks)
+./run_complete_benchmark.sh --test   # Test mode (2 configs × 5 powercaps × 4 cases = 40 benchmarks, ~5-8 min)
 ```
 
 **What it does automatically:**

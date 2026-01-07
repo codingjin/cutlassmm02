@@ -34,7 +34,7 @@ print_success() {
 }
 
 # Parse arguments
-MODE="test"  # Default to test mode
+MODE="full"  # Default to full mode
 if [ "$1" == "--full" ]; then
     MODE="full"
 elif [ "$1" == "--test" ]; then
@@ -43,7 +43,7 @@ elif [ -n "$1" ]; then
     print_error "Unknown option: $1"
     echo "Usage: $0 [--test|--full]"
     echo "  --test: Run test mode (2 configs × 5 powercaps × 4 cases = 40 benchmarks, ~5-8 min)"
-    echo "  --full: Run full mode (36 configs × 5 powercaps × 4 cases = 720 benchmarks, ~4-5 hours)"
+    echo "  --full: Run full mode (36 configs × 5 powercaps × 4 cases = 720 benchmarks, ~4-5 hours) [DEFAULT]"
     exit 1
 fi
 
