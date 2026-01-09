@@ -38,7 +38,7 @@ NVML_FLAGS = -lnvidia-ml
 # Targets
 TARGETS = cutlass_matmul_tuning verify_correctness
 
-.PHONY: all clean autotune run help multisize run-multisize multisize-test run-multisize-test gpu-info norm final
+.PHONY: all clean autotune run help multisize run-multisize multisize-test run-multisize-test gpu-info norm final final0
 
 # Show GPU information
 gpu-info:
@@ -150,6 +150,14 @@ final:
 	@echo "Final results saved to:"
 	@echo "  case1/final.csv, case2/final.csv, case3/final.csv, case4/final.csv"
 
+# Generate final0 CSV files from final.csv (removes gflops and norm_mul columns)
+final0:
+	@echo "Generating final0 CSV files from final.csv..."
+	python3 generate_final0.py
+	@echo ""
+	@echo "Final0 results saved to:"
+	@echo "  case1/final0.csv, case2/final0.csv, case3/final0.csv, case4/final0.csv"
+
 # Clean build artifacts
 clean:
 	rm -f $(TARGETS) cutlass_autotune_generated multisize_benchmark multisize_benchmark_test query_gpu_smem
@@ -176,6 +184,7 @@ help:
 	@echo "  make run-multisize-test  - Run test benchmark with energy (40 benchmarks, ~5-8 min)"
 	@echo "  make norm                - Generate normalized CSV files from summary.csv"
 	@echo "  make final               - Generate final CSV files from norm.csv (combines power levels)"
+	@echo "  make final0              - Generate final0 CSV files (removes gflops and norm_mul columns)"
 	@echo "  make verify              - Run correctness verification (vs cuBLAS)"
 	@echo "  make clean               - Remove build artifacts"
 	@echo "  make help                - Show this help message"

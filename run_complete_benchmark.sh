@@ -1,5 +1,5 @@
 #!/bin/bash
-# Complete benchmark workflow: configs → final.csv
+# Complete benchmark workflow: configs → final.csv → final0.csv
 # Usage: ./run_complete_benchmark.sh [--test|--full]
 
 set -e  # Exit on error
@@ -62,7 +62,7 @@ echo ""
 # ============================================
 # STEP 1: Check prerequisites
 # ============================================
-print_header "Step 1/6: Checking Prerequisites"
+print_header "Step 1/7: Checking Prerequisites"
 
 # Check if configs file exists
 if [ ! -f "configs" ]; then
@@ -113,7 +113,7 @@ echo ""
 # ============================================
 # STEP 2: Clean previous results
 # ============================================
-print_header "Step 2/6: Cleaning Previous Results"
+print_header "Step 2/7: Cleaning Previous Results"
 
 if [ -d "case1" ] || [ -d "case2" ] || [ -d "case3" ] || [ -d "case4" ]; then
     print_warning "Found existing results in case* directories"
@@ -134,7 +134,7 @@ echo ""
 # ============================================
 # STEP 3: Build benchmark
 # ============================================
-print_header "Step 3/6: Building Benchmark"
+print_header "Step 3/7: Building Benchmark"
 
 if [ "$MODE" == "test" ]; then
     print_info "Building test mode benchmark..."
@@ -161,7 +161,7 @@ echo ""
 # ============================================
 # STEP 4: Run benchmark
 # ============================================
-print_header "Step 4/6: Running Benchmark"
+print_header "Step 4/7: Running Benchmark"
 
 if [ "$MODE" == "test" ]; then
     print_info "Running 40 benchmarks (2 configs × 5 powercaps × 4 cases)..."
@@ -192,7 +192,7 @@ echo ""
 # ============================================
 # STEP 5: Generate normalized metrics
 # ============================================
-print_header "Step 5/6: Generating Normalized Metrics"
+print_header "Step 5/7: Generating Normalized Metrics"
 
 print_info "Processing summary.csv files..."
 
@@ -216,7 +216,7 @@ echo ""
 # ============================================
 # STEP 6: Generate final pivoted data
 # ============================================
-print_header "Step 6/6: Generating Final CSV Files"
+print_header "Step 6/7: Generating Final CSV Files"
 
 print_info "Creating final.csv files (one row per config)..."
 
@@ -241,9 +241,35 @@ if make final 2>&1 | grep -q "Done"; then
     echo "  - summary.csv: Raw measurements (time, energy, GFLOPS, power)"
     echo "  - norm.csv:    Normalized metrics (EDP, norm_time, norm_energy, etc.)"
     echo "  - final.csv:   Pivoted data (one row per config with all power levels)"
+    echo "  - final0.csv:  Pivoted data (removes gflops and norm_mul columns)"
 
 else
     print_error "Failed to generate final CSV files"
+    exit 1
+fi
+
+echo ""
+
+# ============================================
+# STEP 7: Generate final0 CSV files
+# ============================================
+print_header "Step 7/7: Generating Final0 CSV Files"
+
+print_info "Creating final0.csv files (removing gflops and norm_mul columns)..."
+
+if make final0 2>&1 | grep -q "Done"; then
+    print_success "Generated final0.csv files"
+
+    # Show summary of generated files
+    for case in case1 case2 case3 case4; do
+        if [ -f "$case/final0.csv" ]; then
+            ROWS=$(tail -n +2 "$case/final0.csv" | wc -l)
+            COLS=$(head -1 "$case/final0.csv" | awk -F',' '{print NF}')
+            print_info "  $case/final0.csv: $ROWS configs × $COLS columns"
+        fi
+    done
+else
+    print_error "Failed to generate final0 CSV files"
     exit 1
 fi
 
@@ -254,19 +280,24 @@ echo ""
 # ============================================
 print_header "Workflow Complete!"
 echo ""
-print_success "All final.csv files are ready!"
+print_success "All final.csv and final0.csv files are ready!"
 echo ""
 echo "View results:"
-echo "  ls -lh case*/final.csv"
+echo "  ls -lh case*/final.csv case*/final0.csv"
 echo "  head case1/final.csv"
+echo "  head case1/final0.csv"
 echo ""
 echo "Preview in column format:"
 echo "  column -t -s',' case1/final.csv | less -S"
+echo "  column -t -s',' case1/final0.csv | less -S"
 echo ""
 echo "Full results location:"
 for case in case1 case2 case3 case4; do
     if [ -f "$case/final.csv" ]; then
         echo "  $(pwd)/$case/final.csv"
+    fi
+    if [ -f "$case/final0.csv" ]; then
+        echo "  $(pwd)/$case/final0.csv"
     fi
 done
 echo ""

@@ -66,7 +66,10 @@ make clean             # Remove binaries and generated files
 - CUTLASS kernel: `ArchTag = Sm80` (TF32 template works on both SM80/SM86)
 
 **Tile dimension constraints**:
-- **ThreadblockK must be 32** (not 64) - TF32 shared memory layout limitation
+- **ThreadblockK and WarpK must match and be one of: 16, 32, or 64** (see K_DIMENSION_STUDY.md for details)
+  - K=16: Minimum valid, lowest shared memory usage
+  - K=32: Default, balanced choice
+  - K=64: Maximum valid, highest shared memory usage
 - Warp tiles must divide threadblock evenly
 - Warp dimensions must be multiples of instruction shape (16×8×8 for TF32)
 
@@ -307,3 +310,53 @@ The benchmark automatically:
 - Sets persistent mode
 - Disables other GPUs to avoid interference
 - All via passwordless `nvidia-smi` commands
+
+## Additional Documentation
+
+For deeper understanding and advanced usage:
+
+### Technical Deep Dives
+
+- **[CUTLASS_PARAMETERS_EXPLAINED.md](CUTLASS_PARAMETERS_EXPLAINED.md)** - **Complete guide to understanding all parameters**
+  - GPU execution hierarchy (threads → warps → threadblocks → SMs)
+  - The 7 core parameters explained with visual diagrams:
+    - Threadblock tiles (tb_m, tb_n, tb_k)
+    - Warp tiles (warp_m, warp_n, warp_k)
+    - Pipeline stages (software pipelining)
+  - Threadblock swizzle function (cache locality optimization)
+  - Split-K parallelism (for K-dominant problems)
+  - Real-world example: Complete 4096×4096 matrix multiplication walkthrough
+  - 19 additional learning resources (papers, videos, official docs)
+  - **START HERE if you need to understand the parameters**
+
+- **[TF32_AND_TENSOR_CORES_EXPLAINED.md](TF32_AND_TENSOR_CORES_EXPLAINED.md)** - TF32 format and Tensor Cores explained
+  - Comprehensive explanation of TF32 (19-bit floating point)
+  - How Tensor Cores work (specialized matrix multiplication hardware)
+  - Instruction shape breakdown (16×8×8 for TF32)
+  - Why K dimension constraints exist
+  - Visual diagrams and real-world examples
+
+- **[K_DIMENSION_STUDY.md](K_DIMENSION_STUDY.md)** - K dimension constraint study
+  - Valid K values: **16, 32, or 64** (tb_k must equal warp_k)
+  - Comprehensive test results and error analysis
+  - Performance implications
+  - **Read this before modifying K dimensions**
+
+- **[ADDITIONAL_TUNING_PARAMETERS.md](ADDITIONAL_TUNING_PARAMETERS.md)** - Beyond the current 7 parameters
+  - Analysis of 7 additional tunable CUTLASS parameters
+  - Threadblock swizzle functions (5-20% potential improvement)
+  - Split-K parallelism for K-dominant problems
+  - Matrix layout combinations (RRR, RCR, CRR)
+  - Data type options: FP16/BF16 (2× faster), INT8 (4× faster)
+  - Priority ranking and implementation guide
+  - **Read this to expand the search space**
+
+### Quick Reference
+- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - One-page quick reference
+  - Most important constraints highlighted
+  - Common commands and workflows
+  - Troubleshooting guide
+
+- **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Complete documentation index
+  - All documentation files organized by category
+  - Common tasks and navigation

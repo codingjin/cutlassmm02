@@ -75,15 +75,19 @@ def generate_search_space(gpu_config=None) -> List[KernelConfig]:
     if gpu_config is None:
         gpu_config = get_gpu_config()
 
-    # Threadblock tile sizes (K=32 for TF32 compatibility)
+    # Threadblock tile sizes
+    # K can be 16, 32, or 64 (must match warp_k)
+    # K=32 is used as default balanced choice (see K_DIMENSION_STUDY.md)
     # Limit to smaller sizes to avoid CUTLASS validation failures
     tb_sizes = [
         (64, 64), (64, 128), (128, 64), (128, 128)
     ]
-    tb_k = 32
+    tb_k = 32  # Valid values: 16, 32, 64 (must match warp_k)
 
     # Known working warp configurations for TF32
     # Format: (warp_m, warp_n, warp_k) compatible with instruction shape 16x8x8
+    # NOTE: warp_k must match tb_k (all use 32 to match tb_k=32 above)
+    # To test K=16 or K=64, change tb_k and all warp_k values accordingly
     proven_warp_configs = [
         (32, 32, 32),
         (32, 64, 32),

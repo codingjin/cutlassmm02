@@ -218,7 +218,10 @@ Execution Time: 3.03 ms
 ### Threadblock Tile
 Controls the size of work assigned to each threadblock:
 - **M, N dimensions**: 64, 128, 256
-- **K dimension**: **32 only** (TF32 constraint)
+- **K dimension**: **16, 32, or 64** (must match warp_k, see K_DIMENSION_STUDY.md)
+  - K=16: Lowest shared memory, most pipeline stages possible
+  - K=32: Default balanced choice
+  - K=64: Highest shared memory, fewer pipeline stages
 
 Larger tiles → Better memory reuse, but more shared memory usage
 
@@ -408,7 +411,8 @@ This is why A100 generates 56 configs vs 36 for RTX 3090/4090—its larger share
 
 **Common failures:**
 - Large threadblocks (256×256) with many stages (4+)
-- K dimension = 64 (use K=32 for TF32)
+- Mismatched tb_k and warp_k (they must be equal)
+- Invalid K values (K must be 16, 32, or 64)
 
 The auto-tuner filters these automatically based on detected GPU.
 
@@ -483,6 +487,50 @@ TB:128x128x32 | W:64x64x32 | S:3 => 2.156 ms | 63847.23 GFLOPS
 
 ## Additional Documentation
 
+### Getting Started
+- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - One-page quick reference
+  - Most important constraints (K dimension)
+  - Common commands
+  - File structure overview
+  - Troubleshooting guide
+
+- **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Complete documentation index
+  - All documentation files organized by category
+  - Common tasks and workflows
+  - Recent updates log
+
+### Technical Deep Dives
+
+- **[CUTLASS_PARAMETERS_EXPLAINED.md](CUTLASS_PARAMETERS_EXPLAINED.md)** - **Complete guide to CUTLASS parameters**
+  - GPU execution hierarchy (threads → warps → threadblocks)
+  - The 7 core parameters with visual diagrams
+  - Threadblock tiles, warp tiles, pipeline stages
+  - Threadblock swizzle and Split-K parallelism
+  - Real-world 4096×4096 example walkthrough
+  - 19 additional learning resources
+  - **START HERE to understand the parameters**
+
+- **[TF32_AND_TENSOR_CORES_EXPLAINED.md](TF32_AND_TENSOR_CORES_EXPLAINED.md)** - TF32 and Tensor Cores explained
+  - What is TF32 format (19-bit floating point)
+  - How Tensor Cores work (matrix multiplication hardware)
+  - Instruction shape breakdown (16×8×8 for TF32)
+  - Why K dimension constraints exist
+
+- **[K_DIMENSION_STUDY.md](K_DIMENSION_STUDY.md)** - K dimension constraint study
+  - Valid K values: 16, 32, or 64 (tb_k must equal warp_k)
+  - Comprehensive test results
+  - Error analysis and explanations
+  - Performance implications
+
+- **[ADDITIONAL_TUNING_PARAMETERS.md](ADDITIONAL_TUNING_PARAMETERS.md)** - Beyond the current 7 parameters
+  - Analysis of 7 additional tunable parameters
+  - Threadblock swizzle (5-20% improvement potential)
+  - Split-K parallelism for K-dominant problems
+  - Matrix layouts, memory alignment, data types (FP16/BF16/INT8)
+  - Priority ranking and implementation guide
+
+### GPU and Hardware
+
 - **[MULTI_GPU_SUPPORT.md](MULTI_GPU_SUPPORT.md)** - Comprehensive multi-GPU usage guide
   - GPU detection and override
   - Cross-compilation examples
@@ -493,6 +541,8 @@ TB:128x128x32 | W:64x64x32 | S:3 => 2.156 ms | 63847.23 GFLOPS
   - Instruction shapes by GPU architecture
   - Data type compatibility
   - Warp tile constraints
+
+### Development
 
 - **[CLAUDE.md](CLAUDE.md)** - Project overview and build commands for Claude Code
 
